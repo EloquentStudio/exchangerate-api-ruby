@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require 'exchangerate/version'
 require 'exchangerate/client'
 
+# # Exchangerate
+#
 module Exchangerate
   # Exchangerate api standered error.
   class Error < StandardError; end

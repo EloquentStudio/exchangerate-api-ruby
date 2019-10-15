@@ -1,0 +1,8 @@
+AllCops:
+  Exclude:
+    - "exchangerate-api.gemspec"
+    - "Gemfile"
+    - "Rakefile"
+    - "test/**/*"
+    - "bin/*"
+  TargetRubyVersion: 2.5
