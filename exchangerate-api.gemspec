@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "exchangerate/version"
+require "exchangerate_api/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "exchangerate-api"
-  spec.version       = Exchangerate::VERSION
+  spec.version       = ExchangerateApi::VERSION
   spec.authors       = ["Jiren Patel"]
   spec.email         = ["jiren@eloquent.studio"]
 

@@ -20,7 +20,7 @@ task :console do
 
   $LOAD_PATH.unshift 'lib'
 
-  require 'exchangerate'
+  require 'exchangerate_api'
 
   ARGV.clear
   IRB.start

@@ -9,6 +9,6 @@ SimpleCov.start do
 end
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'exchangerate'
+require 'exchangerate_api'
 
 require 'minitest/autorun'

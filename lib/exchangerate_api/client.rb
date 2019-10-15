@@ -2,19 +2,19 @@
 
 require 'faraday'
 require 'faraday_middleware'
-require 'exchangerate/result'
-require 'exchangerate/currency_codes'
+require 'exchangerate_api/result'
+require 'exchangerate_api/currency_codes'
 
-module Exchangerate
+module ExchangerateApi
   ##
   # # Client
   #
   # Client to fetch currency exchange rate data.
   #
   # @example
-  #   require "exchagerate"
+  #   require "exchagerate_api"
   #
-  #   client = Exchangerate::Client.new
+  #   client = ExchangerateApi::Client.new
   #
   #   client.rates_for('USD')
   #
@@ -42,15 +42,16 @@ module Exchangerate
     #
     # @param currency_code [String] ISO format currency code.
     #   Supported currency codes are.
-    # @raise [Exchangerate::Error] if invalid currency code or other api errors.
-    # @return [Exchangerate::Version] Exchange rate data.
+    # @raise [ExchangerateApi::Error] if invalid currency code or
+    #   other api errors.
+    # @return [ExchangerateApi::Result] Exchange rate data.
     #
     def rates_for(currency_code)
       resp = @connection.get("/#{version}/latest/#{currency_code}")
 
       return Result.new(resp.body) if resp.status == 200
 
-      raise Exchangerate::Error.new(status: resp.status, message: resp.body)
+      raise ExchangerateApi::Error.new(status: resp.status, message: resp.body)
     end
 
     # List all supported currency codes with countries
@@ -58,6 +59,13 @@ module Exchangerate
     # @return [Hash] List of currency codes {CurrencyCodes::CODES}
     def currency_codes
       CurrencyCodes::CODES
+    end
+
+    # Get exchage rate for usd
+    #
+    # @return [ExchangerateApi::Result] Exchange rate data.
+    def rates_for_usd
+      rates_for 'USD'
     end
   end
 end

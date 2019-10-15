@@ -2,13 +2,13 @@
 
 require 'test_helper'
 
-describe Exchangerate::Client do
+describe ExchangerateApi::Client do
   before do
-    @client = Exchangerate::Client.new
+    @client = ExchangerateApi::Client.new
   end
 
   it 'create instance of client with default values' do
-    client = Exchangerate::Client.new
+    client = ExchangerateApi::Client.new
     expect(client.version).must_equal 'v4'
   end
 
@@ -22,8 +22,20 @@ describe Exchangerate::Client do
     expect(@client.currency_codes.length > 0).must_equal true
   end
 
+  it 'fetch exchange rates data' do
+    rates = @client.rates_for('EUR')
+
+    expect(rates.date).must_be_instance_of Time
+    expect(rates.updated_at).must_be_instance_of Time
+    expect(rates.currency_code).must_equal 'EUR'
+    expect(rates.length > 0).must_equal true
+
+    expect(rates['EUR']).must_equal 1
+    expect(rates['USD'] > 0).must_equal true
+  end
+
   it 'fetch exchange rates data for usd' do
-    rates = @client.rates_for('USD')
+    rates = @client.rates_for_usd
 
     expect(rates.date).must_be_instance_of Time
     expect(rates.updated_at).must_be_instance_of Time
@@ -37,6 +49,6 @@ describe Exchangerate::Client do
   it 'raise error for invalid currency code' do
     expect(proc {
        @client.rates_for('INVALID')
-    }).must_raise Exchangerate::Error
+    }).must_raise ExchangerateApi::Error
   end
 end

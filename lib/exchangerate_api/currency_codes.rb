@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Exchangerate
+module ExchangerateApi
   module CurrencyCodes
     # Currency codes with full name and supported countries
     CODES = {

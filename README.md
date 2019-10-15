@@ -21,9 +21,9 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-require "exchagerate"
+require "exchagerate_api"
   
-client = Exchangerate.new
+client = ExchangerateApi.new
   
 result = client.rates_for('USD')
 result.currency_code # "USD"

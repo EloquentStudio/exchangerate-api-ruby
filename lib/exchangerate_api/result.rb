@@ -2,7 +2,7 @@
 
 require 'forwardable'
 
-module Exchangerate
+module ExchangerateApi
   # # Result
   #
   # Exchange rate response data wrapper.

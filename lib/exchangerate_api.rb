@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'exchangerate/version'
-require 'exchangerate/client'
+require 'exchangerate_api/version'
+require 'exchangerate_api/client'
 
 # # Exchangerate
 #
-module Exchangerate
+module ExchangerateApi
   # Exchangerate api standered error.
   class Error < StandardError; end
 
@@ -14,9 +14,9 @@ module Exchangerate
   # @return [Exchangerate::API]
   #
   # @example
-  #   require "exchagerate"
+  #   require "exchagerate_api"
   #
-  #   client = Exchangerate.new
+  #   client = ExchangerateApi.new
   #
   #   result = client.rates_for('USD')
   #   result.currency_code # "USD"
