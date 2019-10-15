@@ -4,7 +4,7 @@ require 'test_helper'
 
 describe Exchangerate do
   it 'check version number' do
-    refute_nil Exchangerate::VERSION
+    expect(Exchangerate::VERSION).wont_be_nil
   end
 
   it 'create api client' do
